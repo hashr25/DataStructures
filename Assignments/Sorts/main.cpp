@@ -8,6 +8,7 @@
 #include "SelectionSort.h"
 #include "ShellSort.h"
 #include "QuickSort.h"
+#include "RadixSort.h"
 
 #include "SortTest.h"
 
@@ -16,13 +17,13 @@ void printArray(long*, long);
 
 int main()
 {
-/*
-    long size = 10000;
+
+    long size = 1000000;
     int* array = new int[size];
 
     Timer timer;
     RandomNumberGenerator rng;
-    QuickSort sort;
+    ShellSort sort;
 
     array = rng.createIntArray(size);
 
@@ -35,15 +36,13 @@ int main()
 
     //printArray(array,size);
 
-    std::cout << "It took " << timer.getTime() << " seconds." << std::endl;
-
     delete array;
-*/
 
-    Sort* sort = new ShellSort;
+/*
+    Sort* sort = new QuickSort;
     SortTest test(sort);
     test.testSuite();
-
+*/
     return 0;
 }
 

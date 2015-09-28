@@ -44,10 +44,10 @@ void QuickSort::qSort(int* array, long left, long right)
 
     if(left < swapRight)
     {
-        qsort(array, left, swapRight);
+        qSort(array, left, swapRight);
     }
     if(swapLeft < right)
     {
-        qSort(array, swapLeft, right)
+        qSort(array, swapLeft, right);
     }
 }
