@@ -1,0 +1,104 @@
+# depslib dependency file v1.0
+1439898353 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\untitled folder\basicdatastructure\array.cpp
+
+1439898379 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\untitled folder\basicdatastructure\deque.cpp
+
+1439865101 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\untitled folder\basicdatastructure\linkedlist.cpp
+
+1439998716 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\untitled folder\basicdatastructure\main.cpp
+	<iostream>
+	"Queue.h"
+	"Stack.h"
+
+1439898453 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\untitled folder\basicdatastructure\queue.h
+	<iostream>
+	<assert.h>
+
+1439837969 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\untitled folder\basicdatastructure\stack.h
+	<iostream>
+	<assert.h>
+
+1439837108 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\untitled folder\basicdatastructure\queue.cpp
+
+1439996762 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\untitled folder\basicdatastructure\src\node.cpp
+	"Node.h"
+
+1439996373 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\untitled folder\basicdatastructure\include\node.h
+	<iostream>
+	<assert.h>
+
+1439997444 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\untitled folder\basicdatastructure\stack.cpp
+	"Stack.h"
+
+1439898364 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\untitled folder\basicdatastructure\vector.cpp
+
+1439898353 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\array.cpp
+
+1439898379 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\deque.cpp
+
+1439998716 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\main.cpp
+	<iostream>
+	"Queue.h"
+	"Stack.h"
+
+1439898453 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\queue.h
+	<iostream>
+	<assert.h>
+
+1439837969 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\stack.h
+	<iostream>
+	<assert.h>
+
+1439837108 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\queue.cpp
+
+1439996762 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\src\node.cpp
+	"Node.h"
+
+1439996373 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\include\node.h
+	<iostream>
+	<assert.h>
+
+1439997444 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\stack.cpp
+	"Stack.h"
+
+1439898364 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\vector.cpp
+
+1440213602 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\include\queue.h
+	<iostream>
+	<assert.h>
+	"Node.h"
+
+1440214217 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\include\stack.h
+	<iostream>
+	<assert.h>
+	"Node.h"
+
+1440217454 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\src\array.cpp
+	"Array.h"
+
+1440214870 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\src\deque.cpp
+	"Deque.h"
+
+1440214202 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\src\linkedlist.cpp
+	"LinkedList.h"
+
+1440214161 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\include\linkedlist.h
+	<iostream>
+	<assert.h>
+	"Node.h"
+
+1440217427 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\include\array.h
+	<iostream>
+	<assert.h>
+
+1440214301 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\include\deque.h
+	<iostream>
+	<assert.h>
+	"Node.h"
+
+1440214790 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\src\queue.cpp
+	"Queue.h"
+
+1440212707 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\assignments\basicdatastructure\src\stack.cpp
+	"Stack.h"
+
