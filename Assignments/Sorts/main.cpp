@@ -17,37 +17,38 @@ void printArray(long*, long);
 
 int main()
 {
-
-    long size = 1000000;
+/*
+    long size = 10;
     int* array = new int[size];
 
     Timer timer;
     RandomNumberGenerator rng;
-    ShellSort sort;
+    RadixSort sort;
 
     array = rng.createIntArray(size);
 
-    //printArray(array,size);
+    printArray(array,size);
 
     timer.startTimer();
     sort.intSort(array, size);
     timer.endTimer();
 
 
-    //printArray(array,size);
+    printArray(array,size);
 
     delete array;
+*/
 
-/*
-    Sort* sort = new QuickSort;
+    Sort* sort = new RadixSort;
     SortTest test(sort);
     test.testSuite();
-*/
+
     return 0;
 }
 
 void printArray(int* array, long size)
 {
+    std::cout << "\n\n\nPrinting Array" << std::endl;
     for(long i = 0; i < size; i++)
     {
         std::cout << array[i] << std::endl;
@@ -56,6 +57,7 @@ void printArray(int* array, long size)
 
 void printArray(long* array, long size)
 {
+    std::cout << "\n\n\nPrinting Array" << std::endl;
     for(long i = 0; i < size; i++)
     {
         std::cout << array[i] << std::endl;

@@ -9,7 +9,7 @@ void SortTest::testSuite()
 {
     long size = 10;
 
-    for(int i = 0; i < 6; i++) ///This is just to go from 10 to 1M
+    for(int i = 0; i < 8; i++) ///This is just to go from 10 to 1M
     {
         int* array = new int[size];
         array = rng.createIntArray(size);

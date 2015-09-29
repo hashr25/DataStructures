@@ -35,7 +35,7 @@ void Timer::endTimer()
     std::cout << "gettimeofday  = " << ((endTimeVal.tv_sec * 1000000 + endTimeVal.tv_usec) - (startTimeVal.tv_sec * 1000000 + startTimeVal.tv_usec));
 
     float clockTicks = endTime - startTime;std::cout << "\nclockTicks = " << clockTicks << std::endl;
-    timeInSeconds = clockTicks / CLOCKS_PER_SEC;
+    timeInSeconds = microseconds.count();
     std::cout << "Ending time at " << endTime << std::endl;
 }
 

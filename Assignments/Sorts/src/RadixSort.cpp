@@ -10,7 +10,7 @@ int* RadixSort::intSort(int* array, long size)
     int max = getMax(array, size);
 
     for(long exponent = 1; max/exponent > 0; exponent = exponent * 10)
-    {std::cout << "Count sort on exponent " << exponent << std::endl;
+    {
         countSort(array, size, exponent);
     }
 
@@ -63,31 +63,49 @@ long RadixSort::getMax(long* array, long size)
 
 int* RadixSort::countSort(int* array, long size, long exponent)
 {
-    int* output = new int[size];std::cout << "Created output array" << std::endl;
-    int* count = new int[10];std::cout << "Created count array" << std::endl;
+    int* output = new int[size];
+    int count[10] = {0};
 
+/// /////////////////////////////////////////////
+/// Loop 1
+/// Counts occurrences in count array
     for(long i = 0; i < size; i++)
     {
-        count[ (array[i]/exponent) % 10 ]++;
-    }std::cout << "First loop done" << std::endl;
+        count[ ((array[i]/exponent) % 10 ) ]++;
+    }
 
+
+/// /////////////////////////////////////////////
+/// Loop 2
+/// Switches count array to show actual position in output array
     for (int i = 1; i < 10; i++)
     {
         count[i] += count[i - 1];
-    }std::cout << "Second loop done" << std::endl;
+    }
 
-    for(long i = size - 1; i > 0; i--)
+
+/// /////////////////////////////////////////////
+/// Loop 3
+/// Builds the output array
+    for(long i = size - 1; i >= 0; i--)
     {
-        output[count[ ( array[i] / exponent ) % 10 ] - 1] = array[i];
-        count[ ( array[i] / exponent ) % 10 ]--;
-    }std::cout << "Third loop done" << std::endl;
+        output[count[ (array[i]/exponent)%10 ] - 1] = array[i];
 
+        count[ (array[i]/exponent)%10 ]--;
+    }
+
+/// /////////////////////////////////////////////
+/// Loop 4
+/// Copies output array to actual array
     for (long i = 0; i < size; i++)
     {
         array[i] = output[i];
-    }std::cout << "Fourth loop done" << std::endl;
+    }
 
-    std::cout << "Function done" << std::endl;
+
+    delete output;
+
+
     return array;
 }
 
