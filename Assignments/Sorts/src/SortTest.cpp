@@ -7,9 +7,12 @@ SortTest::SortTest(Sort* sort)
 
 void SortTest::testSuite()
 {
-    long size = 10;
+    long size = 10; ///Starts running tests at 10 members.
+    long trials = 8;
+    int numOfRounds = 1000;
+    double results[trials][numOfRounds];
 
-    for(int i = 0; i < 8; i++) ///This is just to go from 10 to 1M
+    for(int i = 0; i < trials; i++) ///This is just to go from 10 to 1M
     {
         int* array = new int[size];
         array = rng.createIntArray(size);
@@ -26,3 +29,5 @@ void SortTest::testSuite()
         size = size * 10;
     }
 }
+
+void SortTest::averageResults

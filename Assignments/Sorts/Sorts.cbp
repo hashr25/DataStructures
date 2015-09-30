@@ -32,7 +32,27 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/BubbleSort.h" />
+		<Unit filename="include/InsertionSort.h" />
+		<Unit filename="include/QuickSort.h" />
+		<Unit filename="include/RadixSort.h" />
+		<Unit filename="include/RandomNumberGenerator.h" />
+		<Unit filename="include/SelectionSort.h" />
+		<Unit filename="include/ShellSort.h" />
+		<Unit filename="include/Sort.h" />
+		<Unit filename="include/SortTest.h" />
+		<Unit filename="include/Timer.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/BubbleSort.cpp" />
+		<Unit filename="src/InsertionSort.cpp" />
+		<Unit filename="src/QuickSort.cpp" />
+		<Unit filename="src/RadixSort.cpp" />
+		<Unit filename="src/RandomNumberGenerator.cpp" />
+		<Unit filename="src/SelectionSort.cpp" />
+		<Unit filename="src/ShellSort.cpp" />
+		<Unit filename="src/Sort.cpp" />
+		<Unit filename="src/SortTest.cpp" />
+		<Unit filename="src/Timer.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
