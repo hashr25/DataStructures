@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1444438784 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\datastructures\examproblem2\main.cpp
+	<iostream>
+	"ExpressionChecker.h"
+
+1444439480 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\datastructures\examproblem2\src\expressionchecker.cpp
+	"ExpressionChecker.h"
+
+1444435446 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\datastructures\examproblem2\include\expressionchecker.h
+	<iostream>
+	<string>
+	"Stack.h"
+
+1444439021 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\datastructures\examproblem2\include\stack.h
+	<iostream>
+	"Node.h"
+
+1444435088 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\datastructures\examproblem2\include\node.h
+	<stdlib.h>
+
+1444435113 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\datastructures\examproblem2\src\node.cpp
+	"Node.h"
+
+1444439506 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\datastructures\examproblem2\src\stack.cpp
+	"Stack.h"
+
