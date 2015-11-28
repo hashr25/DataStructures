@@ -17,13 +17,13 @@ void printArray(long*, long);
 
 int main()
 {
-/*
-    long size = 10;
+
+    long size = 100;
     int* array = new int[size];
 
     Timer timer;
     RandomNumberGenerator rng;
-    RadixSort sort;
+    QuickSort sort;
 
     array = rng.createIntArray(size);
 
@@ -37,12 +37,12 @@ int main()
     printArray(array,size);
 
     delete array;
-*/
 
-    Sort* sort = new RadixSort;
+
+    /*Sort* sort = new RadixSort;
     SortTest test(sort);
     test.testSuite();
-
+*/
     return 0;
 }
 
