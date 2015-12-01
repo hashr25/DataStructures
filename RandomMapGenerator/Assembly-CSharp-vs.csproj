@@ -51,6 +51,8 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Loader.cs" />
      <Compile Include="Assets\Scripts\MirrorScript.cs" />
+     <Compile Include="Assets\Scripts\ParticleRotation.cs" />
+     <Compile Include="Assets\Scripts\ParticleSpiralEffect.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\PlayerReset.cs" />
      <Compile Include="Assets\Scripts\ProbeSetup.cs" />

@@ -31,6 +31,7 @@ namespace Completed
 		public GameObject[] floorTiles;                                 //Array of floor prefabs.
 		public GameObject[] wallTiles;                                  //Array of wall prefabs.
 		public GameObject[] outerWallTiles;                             //Array of outer tile prefabs.
+		public GameObject endTile;						
 		
 		private Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
 		private List <Vector3> gridPositions = new List <Vector3> ();   //A list of possible locations to place tiles.
@@ -41,6 +42,7 @@ namespace Completed
 		{
 			//Clear our list gridPositions.
 			gridPositions.Clear ();
+
 			
 			//Loop through x axis (columns).
 			for(int x = 1; x < columns-1; x++)
@@ -58,6 +60,7 @@ namespace Completed
 		//Sets up the outer walls and floor (background) of the game board.
 		void BoardSetup ()
 		{
+			CleanBoard ();
 			//Instantiate Board and set boardHolder to its transform.
 			boardHolder = new GameObject ("Board").transform;
 			
@@ -81,6 +84,15 @@ namespace Completed
 					//Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
 					instance.transform.SetParent (boardHolder);
 				}
+			}
+		}
+
+		void CleanBoard()
+		{
+			int childs = boardHolder.childCount;
+			for (int i = childs - 1; i > 0; i--)
+			{
+				GameObject.Destroy(boardHolder.GetChild(i).gameObject);
 			}
 		}
 		
@@ -126,6 +138,9 @@ namespace Completed
 		//SetupScene initializes our level and calls the previous functions to lay out the game board
 		public void SetupScene (int level)
 		{
+			columns = level * 4;
+			rows = level * 4;
+
 			//Creates the outer walls and floor.
 			BoardSetup ();
 			

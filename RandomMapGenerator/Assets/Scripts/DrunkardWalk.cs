@@ -29,7 +29,14 @@ namespace Completed
 		public GameObject[] floorTiles;                                 //Array of floor prefabs.
 		public GameObject[] wallTiles;                                  //Array of wall prefabs.
 		public GameObject[] outerWallTiles;                             //Array of outer tile prefabs.
-		
+
+		public bool endEnabled = true;
+		public GameObject endTile;
+
+		public bool MirrorsEnabled = false;
+		public Count numOfMirrors = new Count (1, 2);					//Lower and upper limit for the number of mirrors in the 
+		public GameObject[] mirrorTiles;
+
 		private Transform boardHolder;                                  //A variable to store a reference to the transform of our Board object.
 		private List <Vector3> gridPositions = new List <Vector3> ();   //A list of possible locations to place tiles.
 		private List <Vector3> wallPositions = new List <Vector3> ();
@@ -77,8 +84,11 @@ namespace Completed
 				{
 					i--;
 				}
+				else
+				{
+					gridPositions.Add(new Vector3(currentX, currentY, 0f));
+				}
 
-				gridPositions.Add(new Vector3(currentX, currentY, 0f));
 			}
 		}
 		
@@ -86,6 +96,7 @@ namespace Completed
 		//Sets up the outer walls and floor (background) of the game board.
 		void BoardSetup ()
 		{
+			//CleanBoard ();
 			//Instantiate Board and set boardHolder to its transform.
 			boardHolder = new GameObject ("Board").transform;
 
@@ -127,9 +138,9 @@ namespace Completed
 				{
 					wallPositions.Add(westOf);
 				}
-
 			}
 
+			//Walls posted
 			for (int i = 0; i < wallPositions.Count; i++) 
 			{
 				//Choose a random tile from our array of floor tile prefabs and prepare to instantiate it.
@@ -138,6 +149,42 @@ namespace Completed
 				//Instantiate the GameObject instance using the prefab chosen for toInstantiate at the Vector3 corresponding to current grid position in loop, cast it to GameObject.
 				GameObject instance =
 					Instantiate (toInstantiate, new Vector3 (wallPositions[i].x, 0f, wallPositions[i].y), Quaternion.identity) as GameObject;
+				
+				//Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
+				instance.transform.SetParent (boardHolder);
+			}
+
+			//Mirrors
+			if (MirrorsEnabled) 
+			{
+				int totalMirrors = Random.Range (numOfMirrors.minimum, numOfMirrors.maximum);
+				for (int i = 0; i < totalMirrors; i++) {
+					Vector3 randomPosition = RandomPosition ();
+
+					//Choose a random tile from our array of floor tile prefabs and prepare to instantiate it.
+					GameObject toInstantiate = mirrorTiles [Random.Range (0, mirrorTiles.Length)];
+					
+					//Instantiate the GameObject instance using the prefab chosen for toInstantiate at the Vector3 corresponding to current grid position in loop, cast it to GameObject.
+					GameObject instance =
+						Instantiate (toInstantiate, new Vector3 (randomPosition.x, 0f, randomPosition.y), Quaternion.identity) as GameObject;
+					
+					//Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
+					instance.transform.SetParent (boardHolder);
+					instance.transform.Rotate (new Vector3 (0f, Random.Range (0, 360), 0f));
+				}
+			}
+
+			//End game
+			if (endEnabled) 
+			{
+				Vector3 randomPosition = RandomPosition ();
+				
+				//Choose a random tile from our array of floor tile prefabs and prepare to instantiate it.
+				GameObject toInstantiate = endTile;
+				
+				//Instantiate the GameObject instance using the prefab chosen for toInstantiate at the Vector3 corresponding to current grid position in loop, cast it to GameObject.
+				GameObject instance =
+					Instantiate (toInstantiate, new Vector3 (randomPosition.x, 0f, randomPosition.y), Quaternion.identity) as GameObject;
 				
 				//Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
 				instance.transform.SetParent (boardHolder);
@@ -186,6 +233,9 @@ namespace Completed
 		//SetupScene initializes our level and calls the previous functions to lay out the game board
 		public void SetupScene (int level)
 		{
+			pathLenth.minimum = (level + 4) * (level + 4);
+			pathLenth.maximum = (level + 4) * (level + 4) * (level + 4);
+
 			//Reset our list of gridpositions.
 			InitialiseList ();
 
