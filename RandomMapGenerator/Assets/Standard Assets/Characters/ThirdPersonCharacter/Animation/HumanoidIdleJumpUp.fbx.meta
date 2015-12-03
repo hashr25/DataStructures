@@ -475,8 +475,8 @@ ModelImporter:
     4300114: l_hipProxy_geo
     7400000: __preview___207_Idle_JumpUpMedium_NoHands1Step_Idle
     7400002: HumanoidIdleJumpUp
-    7400004: HumanoidFall
-    7400006: HumanoidJumpUp
+    7400004: HumanoidFall_Audio
+    7400006: HumanoidJumpUp_Audio
     7400008: HumanoidMidAir
     9500000: //RootNode
     11100000: //RootNode
@@ -489,7 +489,10 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    pivotNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -526,7 +529,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: HumanoidFall
+      name: HumanoidFall_Audio
       takeName: _207_Idle_JumpUpMedium_NoHands1Step_Idle
       firstFrame: 127
       lastFrame: 129
@@ -547,7 +550,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: .988441527
+        functionName: Land()
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -848,7 +858,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: HumanoidJumpUp
+      name: HumanoidJumpUp_Audio
       takeName: _207_Idle_JumpUpMedium_NoHands1Step_Idle
       firstFrame: 125
       lastFrame: 127
@@ -869,7 +879,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: Jump()
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -1502,6 +1519,7 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
+    keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
@@ -2377,9 +2395,12 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
+    hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: d89ea37480b6d75458aa38843e9688dc,
     type: 3}
   animationType: 3
+  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
+  assetBundleVariant: 

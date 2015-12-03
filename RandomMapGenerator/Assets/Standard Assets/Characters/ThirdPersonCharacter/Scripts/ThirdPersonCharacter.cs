@@ -29,6 +29,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
 
+		public AudioClip LeftWalkSound;
+		public AudioClip RightWalkSound;
+		public AudioClip LeftRunSound;
+		public AudioClip RightRunSound;
+		public AudioClip JumpSound;
+		public AudioClip LandSound;
+
 
 		void Start()
 		{
@@ -222,4 +229,5 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 		}
 	}
+
 }
