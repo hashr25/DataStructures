@@ -29,6 +29,7 @@ namespace Completed
 
 
 		private int MapMode = 1;
+		private bool mapMaxed = false;
 
 		private BlockMapGeneration columnedRoomGeneration;                 
 		private DrunkardWalk drunkardWalk;
@@ -193,6 +194,24 @@ namespace Completed
 					mapCamera.fieldOfView--;
 				}
 			}
+
+			if (Input.GetKeyDown (KeyCode.F)) 
+			{
+				Camera mapCamera = GameObject.Find ("MapCamera").GetComponent<Camera> ();
+
+				if(!mapMaxed)
+				{
+					mapMaxed = true;
+					mapCamera.rect = new Rect(0f, 0f, 1f, 1f);
+				}
+				else
+				{
+					mapMaxed = false;
+					mapCamera.rect = new Rect(0.8f, 0.7f, 0.2f, 0.3f);
+				}
+			}
+
+
 		}
 
 		void Notify(GameEvent e)
