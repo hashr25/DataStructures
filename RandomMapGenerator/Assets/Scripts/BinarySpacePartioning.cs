@@ -13,12 +13,12 @@ public class BinarySpacePartioning : MonoBehaviour
 	/// <summary>
 	/// The height of the map.
 	/// </summary>
-	public int MapHeight = 100;
+	public int MapHeight = 40;
 
 	/// <summary>
 	/// The width of the map.
 	/// </summary>
-	public int MapWidth = 100;
+	public int MapWidth = 40;
 
 	/// <summary>
 	/// The maximum size of a leaf.
@@ -127,23 +127,27 @@ public class BinarySpacePartioning : MonoBehaviour
 				max = width - MinimumLeafSize;
 			}
 
-			if (max <= MinimumLeafSize)
+			if (max <= MinimumLeafSize) 
+			{Debug.Log(max + " was less than " + MinimumLeafSize);
 				return false; // the area is too small to split any more...
-			
-			int split = Random.Range(MinimumLeafSize, max); // determine where we're going to split
-			
-			// create our left and right children based on the direction of the split
-			if (splitH)
+			} 
+			else 
 			{
-				leftChild = new Leaf(x, y, width, split);
-				rightChild = new Leaf(x, y + split, width, height - split);
+				int split = Random.Range (MinimumLeafSize, max); // determine where we're going to split
+			
+				// create our left and right children based on the direction of the split
+				if (splitH) 
+				{
+					leftChild = new Leaf (x, y, width, split);
+					rightChild = new Leaf (x, y + split, width, height - split);
+				} 
+				else 
+				{
+					leftChild = new Leaf (x, y, split, height);
+					rightChild = new Leaf (x + split, y, width - split, height);
+				}
+				return true; // split successful!
 			}
-			else
-			{
-				leftChild = new Leaf(x, y, split, height);
-				rightChild = new Leaf(x + split, y, width - split, height);
-			}
-			return true; // split successful!
 		}
 
 		public void CreateRooms()
@@ -169,15 +173,15 @@ public class BinarySpacePartioning : MonoBehaviour
 			}
 			else
 			{
-				// this Leaf is the ready to make a room
-				// the room can be between 3 x 3 tiles to the size of the leaf - 2.
-				int roomX =  Random.Range (3, width - 2);
-				int roomY =  Random.Range (3, height - 2);
-
 				// place the room within the Leaf, but don't put it right 
 				// against the side of the Leaf (that would merge rooms together)
-				int roomWidth =  Random.Range (1, width - roomX - 1);
-				int roomHeight = Random.Range (1, height - roomY - 1);
+				int roomWidth =  Random.Range (3, width - 2);
+				int roomHeight = Random.Range (3, height - 2);
+
+				// this Leaf is the ready to make a room
+				// the room can be between 3 x 3 tiles to the size of the leaf - 2.
+				int roomX =  Random.Range (1, width - roomWidth - 1);
+				int roomY =  Random.Range (1, height - roomHeight - 1);
 
 				room = new Room((x + roomX), (y + roomY), roomWidth, roomHeight);
 			}
@@ -332,7 +336,7 @@ public class BinarySpacePartioning : MonoBehaviour
 		List<Leaf> leaves = new List<Leaf>();
 
 		Leaf root = new Leaf(0, 0, MapWidth, MapHeight);
-		Leaf.MinimumLeafSize = (level + 5);
+		Leaf.MinimumLeafSize = (level + 6);
 		MasterRoot = root;
 
 		leaves.Add(root);
@@ -367,6 +371,10 @@ public class BinarySpacePartioning : MonoBehaviour
 
 	void InitializeMap(int level)
 	{
+		//Clear our lists.
+		gridPositions.Clear ();
+		wallPositions.Clear ();
+
 		MasterRoot = null;
 		boardHolder = new GameObject ("Board").transform;
 
@@ -384,10 +392,11 @@ public class BinarySpacePartioning : MonoBehaviour
 			{
 				for(int roomXcounter = 0; roomXcounter < Leafs[leafCounter].room.width; roomXcounter++)
 				{
+					//Debug.Log("Room: " + Leafs[leafCounter].room.x + ", " + Leafs[leafCounter].room.y + ", width: " + Leafs[leafCounter].room.width + ", height: " + Leafs[leafCounter].room.height);
+
 					for(int roomYcounter = 0; roomYcounter < Leafs[leafCounter].room.height; roomYcounter++)
 					{
-						Debug.Log("Room: " + Leafs[leafCounter].room.x + ", " + Leafs[leafCounter].room.y + ", width: " + Leafs[leafCounter].room.width + ", height: " + Leafs[leafCounter].room.height);
-						gridPositions.Add(new Vector3((Leafs[leafCounter].room.x + roomXcounter), 0f, (Leafs[leafCounter].room.y + roomYcounter)));
+						gridPositions.Add(new Vector3( (Leafs[leafCounter].room.x + roomXcounter), (Leafs[leafCounter].room.y + roomYcounter), 0f ));
 					}
 				}
 			}
@@ -399,10 +408,10 @@ public class BinarySpacePartioning : MonoBehaviour
 				{
 					for(int hallXcounter = 0; hallXcounter < Leafs[leafCounter].halls[hallCounter].width; hallXcounter++)
 					{
+						//Debug.Log("Hall: " + Leafs[leafCounter].halls[hallCounter].x + ", " + Leafs[leafCounter].halls[hallCounter].y + ", width: " + Leafs[leafCounter].halls[hallCounter].width + ", height: " + Leafs[leafCounter].halls[hallCounter].height);
 						for(int hallYcounter = 0; hallYcounter < Leafs[leafCounter].halls[hallCounter].height; hallYcounter++)
 						{
-							//Debug.Log("Hall: " + Leafs[leafCounter].halls[hallCounter].x + ", " + Leafs[leafCounter].halls[hallCounter].y + ", width: " + Leafs[leafCounter].halls[hallCounter].width + ", height: " + Leafs[leafCounter].halls[hallCounter].height);
-							gridPositions.Add(new Vector3((Leafs[leafCounter].halls[hallCounter].x + hallXcounter), 0f, (Leafs[leafCounter].halls[hallCounter].y + hallYcounter)));
+							gridPositions.Add(new Vector3((Leafs[leafCounter].halls[hallCounter].x + hallXcounter), (Leafs[leafCounter].halls[hallCounter].y + hallYcounter), 0f));
 						}
 					}
 				}
@@ -415,10 +424,10 @@ public class BinarySpacePartioning : MonoBehaviour
 		//Setup walls
 		for (int i = 0; i < gridPositions.Count; i++) 
 		{
-			Vector3 northOf = gridPositions[i]; northOf.y = northOf.y + 5;
-			Vector3 southOf = gridPositions[i]; southOf.y = southOf.y - 5;
-			Vector3 eastOf = gridPositions[i]; eastOf.x = eastOf.x + 5;
-			Vector3 westOf = gridPositions[i]; westOf.x = westOf.x - 5;
+			Vector3 northOf = gridPositions[i]; northOf.y = northOf.y + 1;
+			Vector3 southOf = gridPositions[i]; southOf.y = southOf.y - 1;
+			Vector3 eastOf = gridPositions[i]; eastOf.x = eastOf.x + 1;
+			Vector3 westOf = gridPositions[i]; westOf.x = westOf.x - 1;
 			
 			if(!gridPositions.Contains(northOf))
 			{
@@ -449,7 +458,7 @@ public class BinarySpacePartioning : MonoBehaviour
 			
 			//Instantiate the GameObject instance using the prefab chosen for toInstantiate at the Vector3 corresponding to current grid position in loop, cast it to GameObject.
 			GameObject instance =
-				Instantiate (toInstantiate, new Vector3 (gridPositions[i].x*5, 0f, gridPositions[i].y*5), Quaternion.identity) as GameObject;
+				Instantiate (toInstantiate, new Vector3 ((gridPositions[i].x*5), 0f, (gridPositions[i].y*5)), Quaternion.identity) as GameObject;
 			
 			//Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
 			instance.transform.SetParent (boardHolder);
@@ -463,15 +472,15 @@ public class BinarySpacePartioning : MonoBehaviour
 			
 			//Instantiate the GameObject instance using the prefab chosen for toInstantiate at the Vector3 corresponding to current grid position in loop, cast it to GameObject.
 			GameObject instance =
-				Instantiate (toInstantiate, new Vector3 (wallPositions[i].x*5, 0f, wallPositions[i].y*5), Quaternion.identity) as GameObject;
+				Instantiate (toInstantiate, new Vector3 ((wallPositions[i].x*5), 0f, (wallPositions[i].y*5)), Quaternion.identity) as GameObject;
 			
 			//Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
 			instance.transform.SetParent (boardHolder);
 		}
-
+		
+		//End Tile
 		if (endEnabled) 
 		{
-			//End Tile
 			Vector3 randomPosition = RandomPosition ();
 			
 			//Choose a random tile from our array of floor tile prefabs and prepare to instantiate it.
@@ -479,7 +488,7 @@ public class BinarySpacePartioning : MonoBehaviour
 			
 			//Instantiate the GameObject instance using the prefab chosen for toInstantiate at the Vector3 corresponding to current grid position in loop, cast it to GameObject.
 			GameObject instance =
-				Instantiate (toInstantiate, new Vector3 (randomPosition.x*5, 0f, randomPosition.y*5), Quaternion.identity) as GameObject;
+				Instantiate (toInstantiate, new Vector3 ((randomPosition.x*5), 0f, (randomPosition.y*5)), Quaternion.identity) as GameObject;
 			
 			//Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
 			instance.transform.SetParent (boardHolder);
@@ -488,14 +497,17 @@ public class BinarySpacePartioning : MonoBehaviour
 
 	public void SetupScene(int level)
 	{
-		MapWidth =  25 * level;
-		MapHeight = 25 * level;
+		MapWidth =  (level + 1) * 10;
+		MapHeight = (level + 1) * 10;
 
-		MaximumLeafSize = (level + 2) * 2;
+		MaximumLeafSize = 20 + level;
 
 		InitializeMap (level);
 		BuildGrid ();
 		BuildWalls ();
 		AssembleMap ();
+
+		GameObject.Find ("ThirdPersonController").transform.position = new Vector3(gridPositions[0].x*5, 0f, gridPositions[0].y*5);
+		GameObject.Find ("MultipurposeCameraRig").transform.position = new Vector3(gridPositions[0].x*5, 0f, gridPositions[0].y*5);
 	}
 }
