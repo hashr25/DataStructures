@@ -97,6 +97,7 @@ namespace Completed
 				binarySpacePartioning.SetupScene(level);
 			}
 
+			//Binary Space Partioning handles player reset
 			if (MapMode != 2) {
 				ResetPlayer ();
 			}
@@ -168,15 +169,30 @@ namespace Completed
 			CleanBoard ();
 			binarySpacePartioning.SetupScene (level);
 		}
-		
+
 		//Update is called every frame.
 		void Update()
 		{
-			GameEvent e = new GameEvent ();
-			e.type = EventType.DATA_EVENT;
-			e.data = Random.Range (0, 100);
+			if (Input.GetKeyDown (KeyCode.M)) 
+			{
+				Camera mapCamera = GameObject.Find ("MapCamera").GetComponent<Camera>();
+				mapCamera.enabled = !mapCamera.enabled;
+			}
 
-			Notify (e);
+			if (Input.GetKey (KeyCode.Equals)) 
+			{
+				Camera mapCamera = GameObject.Find ("MapCamera").GetComponent<Camera> ();
+				mapCamera.fieldOfView++;
+			}
+
+			if(Input.GetKey (KeyCode.Minus) )
+			{
+				Camera mapCamera = GameObject.Find ("MapCamera").GetComponent<Camera>();
+				if (mapCamera.fieldOfView > 1) 
+				{
+					mapCamera.fieldOfView--;
+				}
+			}
 		}
 
 		void Notify(GameEvent e)

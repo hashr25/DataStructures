@@ -48,17 +48,12 @@
      <Compile Include="Assets\Scripts\BinarySpacePartioning.cs" />
      <Compile Include="Assets\Scripts\BlockMapGeneration.cs" />
      <Compile Include="Assets\Scripts\DrunkardWalk.cs" />
-     <Compile Include="Assets\Scripts\EndGameSwitch.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\IObserver.cs" />
      <Compile Include="Assets\Scripts\Loader.cs" />
      <Compile Include="Assets\Scripts\MirrorScript.cs" />
      <Compile Include="Assets\Scripts\MovementAudio.cs" />
      <Compile Include="Assets\Scripts\NextLevel.cs" />
-     <Compile Include="Assets\Scripts\ParticleRotation.cs" />
-     <Compile Include="Assets\Scripts\ParticleSpiralEffect.cs" />
-     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\PlayerReset.cs" />
      <Compile Include="Assets\Scripts\ProbeSetup.cs" />
      <None Include="Assets\Materials\ReflectiveShader.shader" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />

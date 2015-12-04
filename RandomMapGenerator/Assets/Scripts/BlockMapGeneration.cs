@@ -131,11 +131,11 @@ namespace Completed
 		//SetupScene initializes our level and calls the previous functions to lay out the game board
 		public void SetupScene (int level)
 		{
-			columns = level * 6;
-			rows = level * 6;
+			columns = level * 5;
+			rows = level * 5;
 
-			wallCount.minimum = (level + 1);
-			wallCount.maximum = (level + 1) * 2;
+			wallCount.minimum = (columns * rows) / 14;
+			wallCount.maximum = (columns * rows) / 8;
 
 			//Creates the outer walls and floor.
 			BoardSetup ();
