@@ -58,7 +58,7 @@ namespace Completed
 
 			int randomDirection;
 
-
+			//Expansion Algorithm
 			for (int i = 0; i < length; i++) 
 			{
 				randomDirection = Random.Range (0, 4);

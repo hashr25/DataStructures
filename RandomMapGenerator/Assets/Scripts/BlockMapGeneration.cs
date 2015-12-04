@@ -60,7 +60,6 @@ namespace Completed
 		//Sets up the outer walls and floor (background) of the game board.
 		void BoardSetup ()
 		{
-			CleanBoard ();
 			//Instantiate Board and set boardHolder to its transform.
 			boardHolder = new GameObject ("Board").transform;
 			
@@ -84,15 +83,6 @@ namespace Completed
 					//Set the parent of our newly instantiated object instance to boardHolder, this is just organizational to avoid cluttering hierarchy.
 					instance.transform.SetParent (boardHolder);
 				}
-			}
-		}
-
-		void CleanBoard()
-		{
-			int childs = boardHolder.childCount;
-			for (int i = childs - 1; i > 0; i--)
-			{
-				GameObject.Destroy(boardHolder.GetChild(i).gameObject);
 			}
 		}
 		
@@ -130,7 +120,10 @@ namespace Completed
 				GameObject tileChoice = tileArray[Random.Range (0, tileArray.Length)];
 				
 				//Instantiate tileChoice at the position returned by RandomPosition with no change in rotation
-				Instantiate(tileChoice, randomPosition, Quaternion.identity);
+				GameObject instance = 
+					Instantiate(tileChoice, randomPosition, Quaternion.identity) as GameObject;
+
+				instance.transform.SetParent(boardHolder);
 			}
 		}
 		
@@ -138,8 +131,11 @@ namespace Completed
 		//SetupScene initializes our level and calls the previous functions to lay out the game board
 		public void SetupScene (int level)
 		{
-			columns = level * 4;
-			rows = level * 4;
+			columns = level * 6;
+			rows = level * 6;
+
+			wallCount.minimum = (level + 1);
+			wallCount.maximum = (level + 1) * 2;
 
 			//Creates the outer walls and floor.
 			BoardSetup ();
@@ -149,6 +145,12 @@ namespace Completed
 			
 			//Instantiate a random number of wall tiles based on minimum and maximum, at randomized positions.
 			LayoutObjectAtRandom (wallTiles, wallCount.minimum, wallCount.maximum);
+
+			//Randomly put end tile somewhere
+			Vector3 randomPosition = RandomPosition ();
+			GameObject end = Instantiate (endTile, randomPosition, Quaternion.identity) as GameObject;
+			end.transform.SetParent (boardHolder);
+
 		}
 	}
 }

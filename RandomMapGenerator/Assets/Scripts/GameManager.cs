@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -21,10 +22,14 @@ namespace Completed
 
 		public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
 		public int level = 1;                                  //Current level number, expressed in game as "Day 1".
+		private Text levelText; 
+
+
 		public GameObject player;
 
-		private BlockMapGeneration blockMapGen;                 
+		private BlockMapGeneration columnedRoomGeneration;                 
 		private DrunkardWalk drunkardWalk;
+		private BinarySpacePartioning binarySpacePartioning;
 
 		//Observer fields
 		List<IObserver> observers;
@@ -44,6 +49,9 @@ namespace Completed
 		{
 			observers = new List<IObserver> ();
 
+			levelText = GameObject.Find ("LevelText").GetComponent<Text>();
+			levelText.text = "Level: " + level;
+
 			//Check if instance already exists
 			if (instance == null)
 				
@@ -60,8 +68,10 @@ namespace Completed
 			DontDestroyOnLoad(gameObject);
 			
 			//Get a component reference to the attached BoardManager script
-			blockMapGen = GetComponent<BlockMapGeneration>();
+			columnedRoomGeneration = GetComponent<BlockMapGeneration>();
 			drunkardWalk = GetComponent<DrunkardWalk> ();
+			binarySpacePartioning = GetComponent<BinarySpacePartioning> ();
+
 			
 			//Call the InitGame function to initialize the first level 
 			InitGame();
@@ -71,7 +81,6 @@ namespace Completed
 		void InitGame()
 		{
 			//Call the SetupScene function of the BoardManager script, pass it current level number.
-			//boardScript.SetupScene(level);
 			drunkardWalk.SetupScene (level);
 			ResetPlayer ();
 		}
@@ -82,8 +91,7 @@ namespace Completed
 			GameObject toInstantiate = player;
 			
 			//Instantiate the GameObject instance using the prefab chosen for toInstantiate at the Vector3 corresponding to current grid position in loop, cast it to GameObject.
-			GameObject instance =
-				Instantiate (toInstantiate, new Vector3 (0f, 0f, 0f), Quaternion.identity) as GameObject;
+			Instantiate (toInstantiate, new Vector3 (0f, 0f, 0f), Quaternion.identity);
 		}
 
 		//Sets Character
@@ -114,10 +122,31 @@ namespace Completed
 		public void NextLevel ()
 		{
 			level++;
+			levelText.text = "Level: " + level;
 
 			CleanBoard ();
 
 			InitGame ();
+		}
+
+		public void ColumnedRoomGeneration()
+		{
+			CleanBoard ();
+			columnedRoomGeneration.SetupScene (level);
+			ResetPlayer ();
+		}
+
+		public void DrunkardsWalk()
+		{
+			CleanBoard();
+			drunkardWalk.SetupScene (level);
+			ResetPlayer ();
+		}
+
+		public void BinarySpacePartioning()
+		{
+			CleanBoard ();
+			binarySpacePartioning.SetupScene (level);
 		}
 		
 		//Update is called every frame.
@@ -128,19 +157,6 @@ namespace Completed
 			e.data = Random.Range (0, 100);
 
 			Notify (e);
-
-			if (Input.GetKey (KeyCode.N)) 
-			{Debug.Log ("Getting the N button");
-				CleanBoard();
-				drunkardWalk.SetupScene (level);
-				ResetPlayer();
-			}
-			if (Input.GetKey (KeyCode.B)) 
-			{Debug.Log ("Getting the B button");
-				CleanBoard();
-				blockMapGen.SetupScene (level);
-				ResetPlayer();
-			}
 		}
 
 		void Notify(GameEvent e)

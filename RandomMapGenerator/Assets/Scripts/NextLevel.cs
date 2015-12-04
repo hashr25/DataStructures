@@ -8,11 +8,8 @@ public class NextLevel : MonoBehaviour, IObserver
 
 	void OnTriggerEnter (Collider col)
 	{
-		Debug.Log (col.gameObject.name + " is hitting it");
-
 		if ( col.gameObject.name == "ThirdPersonController")  
 		{
-			Debug.Log ("He is getting in there");
 			gameManager.NextLevel();
 		}
 	}
