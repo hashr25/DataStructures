@@ -128,7 +128,8 @@ public class BinarySpacePartioning : MonoBehaviour
 			}
 
 			if (max <= MinimumLeafSize) 
-			{Debug.Log(max + " was less than " + MinimumLeafSize);
+			{
+				//Debug.Log(max + " was less than " + MinimumLeafSize);
 				return false; // the area is too small to split any more...
 			} 
 			else 

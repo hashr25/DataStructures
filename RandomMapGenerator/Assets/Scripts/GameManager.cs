@@ -27,6 +27,9 @@ namespace Completed
 
 		public GameObject player;
 
+
+		private int MapMode = 1;
+
 		private BlockMapGeneration columnedRoomGeneration;                 
 		private DrunkardWalk drunkardWalk;
 		private BinarySpacePartioning binarySpacePartioning;
@@ -81,8 +84,22 @@ namespace Completed
 		void InitGame()
 		{
 			//Call the SetupScene function of the BoardManager script, pass it current level number.
-			drunkardWalk.SetupScene (level);
-			ResetPlayer ();
+			if (MapMode == 0) 
+			{
+				columnedRoomGeneration.SetupScene (level);
+			} 
+			else if (MapMode == 1) 
+			{
+				drunkardWalk.SetupScene (level);
+			} 
+			else if (MapMode == 2) 
+			{
+				binarySpacePartioning.SetupScene(level);
+			}
+
+			if (MapMode != 2) {
+				ResetPlayer ();
+			}
 		}
 
 		void NewPlayer()
@@ -131,6 +148,7 @@ namespace Completed
 
 		public void ColumnedRoomGeneration()
 		{
+			MapMode = 0;
 			CleanBoard ();
 			columnedRoomGeneration.SetupScene (level);
 			ResetPlayer ();
@@ -138,6 +156,7 @@ namespace Completed
 
 		public void DrunkardsWalk()
 		{
+			MapMode = 1;
 			CleanBoard();
 			drunkardWalk.SetupScene (level);
 			ResetPlayer ();
@@ -145,6 +164,7 @@ namespace Completed
 
 		public void BinarySpacePartioning()
 		{
+			MapMode = 2;
 			CleanBoard ();
 			binarySpacePartioning.SetupScene (level);
 		}
