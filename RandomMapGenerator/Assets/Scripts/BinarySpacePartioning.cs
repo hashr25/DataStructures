@@ -337,7 +337,10 @@ public class BinarySpacePartioning : MonoBehaviour
 		List<Leaf> leaves = new List<Leaf>();
 
 		Leaf root = new Leaf(0, 0, MapWidth, MapHeight);
-		Leaf.MinimumLeafSize = (level + 6);
+
+		//Trying this to make more small rooms
+		//Leaf.MinimumLeafSize = (level + 6);
+
 		MasterRoot = root;
 
 		leaves.Add(root);
@@ -430,19 +433,19 @@ public class BinarySpacePartioning : MonoBehaviour
 			Vector3 eastOf = gridPositions[i]; eastOf.x = eastOf.x + 1;
 			Vector3 westOf = gridPositions[i]; westOf.x = westOf.x - 1;
 			
-			if(!gridPositions.Contains(northOf))
+			if(!gridPositions.Contains(northOf) && !wallPositions.Contains(northOf) )
 			{
 				wallPositions.Add(northOf);
 			}
-			if(!gridPositions.Contains(southOf))
+			if(!gridPositions.Contains(southOf) && !wallPositions.Contains(southOf) )
 			{
 				wallPositions.Add(southOf);
 			}
-			if(!gridPositions.Contains(eastOf))
+			if(!gridPositions.Contains(eastOf) && !wallPositions.Contains(eastOf) )
 			{
 				wallPositions.Add(eastOf);
 			}
-			if(!gridPositions.Contains(westOf))
+			if(!gridPositions.Contains(westOf) && !wallPositions.Contains(westOf) )
 			{
 				wallPositions.Add(westOf);
 			}
@@ -501,7 +504,8 @@ public class BinarySpacePartioning : MonoBehaviour
 		MapWidth =  (level + 1) * 10;
 		MapHeight = (level + 1) * 10;
 
-		MaximumLeafSize = 20 + level;
+		//Trying this to keep rooms small
+		//MaximumLeafSize = 20 + level;
 
 		InitializeMap (level);
 		BuildGrid ();

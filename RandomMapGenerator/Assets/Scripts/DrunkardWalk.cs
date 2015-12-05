@@ -122,19 +122,19 @@ namespace Completed
 				Vector3 eastOf = gridPositions[i]; eastOf.x = eastOf.x + 5;
 				Vector3 westOf = gridPositions[i]; westOf.x = westOf.x - 5;
 
-				if(!gridPositions.Contains(northOf))
+				if(!gridPositions.Contains(northOf) && !wallPositions.Contains(northOf) )
 				{
 					wallPositions.Add(northOf);
 				}
-				if(!gridPositions.Contains(southOf))
+				if(!gridPositions.Contains(southOf) && !wallPositions.Contains(southOf) )
 				{
 					wallPositions.Add(southOf);
 				}
-				if(!gridPositions.Contains(eastOf))
+				if(!gridPositions.Contains(eastOf) && !wallPositions.Contains(eastOf) )
 				{
 					wallPositions.Add(eastOf);
 				}
-				if(!gridPositions.Contains(westOf))
+				if(!gridPositions.Contains(westOf) && !wallPositions.Contains(westOf) )
 				{
 					wallPositions.Add(westOf);
 				}
