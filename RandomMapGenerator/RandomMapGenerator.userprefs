@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Standard Assets/Characters/ThirdPersonCharacter/Scripts/ThirdPersonCharacter.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/BinarySpacePartioning.cs">
     <Files>
-      <File FileName="Assets/Scripts/BinarySpacePartioning.cs" Line="445" Column="71" />
+      <File FileName="Assets/Scripts/BinarySpacePartioning.cs" Line="507" Column="36" />
       <File FileName="Assets/Scripts/GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/DrunkardWalk.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/DrunkardWalk.cs" Line="137" Column="71" />
       <File FileName="Assets/Scripts/NextLevel.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/BlockMapGeneration.cs" Line="1" Column="1" />
       <File FileName="Assets/Standard Assets/Characters/ThirdPersonCharacter/Scripts/ThirdPersonUserControl.cs" Line="1" Column="1" />
