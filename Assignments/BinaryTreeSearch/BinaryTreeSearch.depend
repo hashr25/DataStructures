@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1450044194 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\datastructures\assignments\binarytreesearch\main.cpp
+	<iostream>
+	"BinarySearchTree.h"
+
+1450030534 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\datastructures\assignments\binarytreesearch\src\treenode.cpp
+	"TreeNode.h"
+
+1450030661 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\datastructures\assignments\binarytreesearch\include\treenode.h
+	<stdlib.h>
+
+1450043641 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\datastructures\assignments\binarytreesearch\include\binarysearchtree.h
+	<iostream>
+	<queue>
+	<stack>
+	"TreeNode.h"
+
+1450045167 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\datastructures\assignments\binarytreesearch\src\binarysearchtree.cpp
+	"BinarySearchTree.h"
+

@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1450066119 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\datastructures\assignments\heaps\main.cpp
+	<iostream>
+	"Heap.h"
+
+1450065995 source:z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\datastructures\assignments\heaps\src\heap.cpp
+	"Heap.h"
+
+1450066148 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\datastructures\assignments\heaps\include\heap.h
+	<iostream>
+	<math.h>
+	"HeapNode.h"
+
+1450057102 z:\hashr25 on my mac\onedrive\concord university\2015 fall 2015\cs 355 - data structures\datastructures\assignments\heaps\include\heapnode.h
+	<iostream>
+
